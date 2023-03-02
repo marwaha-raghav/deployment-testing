@@ -1,0 +1,23 @@
+name: Deploy Grafana Container
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: u
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Check docker-compose
+        run: |
+          sudo docker-compose version
+          
+      - name: Build Conatainer
+        run: |
+          echo Hello
+        
