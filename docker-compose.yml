@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  grafana:
+    build: .
+    container_name: grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - "./grafana.ini:/etc/grafana/grafana.ini"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_INSTALL_PLUGINS=alexanderzobnin-zabbix-app
+    restart: always
+
+volumes:
+  grafana-data:
