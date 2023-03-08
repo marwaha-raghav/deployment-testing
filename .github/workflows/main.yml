@@ -16,7 +16,7 @@ jobs:
       - name: Check docker-compose
         run: |
           if [ -x "$(command -v docker-compose)" ]; then
-            sudo docker-compose version
+            docker-compose version
             echo "docker-compose verified"
           else
             echo "Installing docker-compose"
