@@ -16,8 +16,18 @@ jobs:
       - name: Check docker-compose
         run: |
           sudo docker-compose version
-          
-      - name: Build Conatainer
+        continue-on-error: true
+        
+      - name: Install docker-compose 
+        if: ${{ job.status != 'success' }}
         run: |
-          echo Hello
+          sudo yum install -y podman-docker
+          sudo curl -SL https://github.com/docker/compose/releases/download/v2.15.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+      
+      - name: build container and run
+        run: |
+          docker-compose up
+
+
         
