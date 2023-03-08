@@ -26,7 +26,7 @@ jobs:
           fi
       - name: build container and run
         run: |
-          sudo docker-compose up
+          docker-compose up
 
 
         
