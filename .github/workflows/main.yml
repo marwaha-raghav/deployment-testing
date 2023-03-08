@@ -15,7 +15,7 @@ jobs:
         
       - name: Check docker-compose
         run: |
-          if [ -x "$(command -v docker-compose)" ];then
+          if [ -x "$(command -v docker-compose)" ]; then
             sudo docker-compose version
             echo "docker-compose verified"
           else
@@ -23,7 +23,7 @@ jobs:
             sudo yum install -y podman-docker
             sudo curl -SL https://github.com/docker/compose/releases/download/v2.15.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
-      
+          fi
       - name: build container and run
         run: |
           docker-compose up
